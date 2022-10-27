@@ -8,6 +8,8 @@ import model.UsuarioModel;
 
 public class UsuarioView {
     
+	
+	
 	public static void main(String[] args) {
 		try {
 			

@@ -36,7 +36,7 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 			conexao = ConexaoDataBase.conectar();
 			statement = conexao.prepareStatement(insertUsuario);
 			
-			statement.setInt(1, 1);
+			statement.setInt(1, 3);
 			statement.setString(2, "Victor");
 			statement.setString(3, "1234");
 			statement.setString(4, "teste@gmail.com");

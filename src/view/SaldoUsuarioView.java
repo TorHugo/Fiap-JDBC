@@ -14,26 +14,26 @@ public class SaldoUsuarioView {
 			SaldoModel model = new SaldoModel();
 			
 			//insert
-//			dao.insert(model);
+			dao.insert(model);
 			
 			//findAll
-//			model.setIdUsuario(1);
-//			List<SaldoModel> saldos = dao.findAll(model.getIdUsuario());
-//			for(SaldoModel saldo : saldos) {
-//				System.out.println(saldo.toString());
-//			}
+			model.setIdUsuario(1);
+			List<SaldoModel> saldos = dao.findAll(model.getIdUsuario());
+			for(SaldoModel saldo : saldos) {
+				System.out.println(saldo.toString());
+			}
 			
 			//findById
-//			model.setIdSaldo(1);
-//			model.setIdUsuario(1);
-//			dao.findById(model.getIdSaldo(), model.getIdUsuario());
+			model.setIdSaldo(1);
+			model.setIdUsuario(1);
+			dao.findById(model.getIdSaldo(), model.getIdUsuario());
 			
 			//update 
-//			model.setIdSaldo(1);
-//			model.setIdUsuario(1);
-//			model.setDsValor(789.55f);
-//			model.setNmValor("TESTE UPDATE");
-//			dao.update(model);
+			model.setIdSaldo(1);
+			model.setIdUsuario(1);
+			model.setDsValor(789.55f);
+			model.setNmValor("TESTE UPDATE");
+			dao.update(model);
 			
 			//delete
 			model.setIdSaldo(1);

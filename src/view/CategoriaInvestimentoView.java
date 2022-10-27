@@ -13,15 +13,15 @@ public class CategoriaInvestimentoView {
 			CategoriaInvestimentoDAO dao =  new CategoriaInvestimentoDAOImpl();
 			CategoriaInvestimentoModel model = new CategoriaInvestimentoModel();
 			
-	//		insert
-//			dao.insert(model);
+			//insert
+			dao.insert(model);
 			
 			//findAll
-//			model.setidCarteira(1);
-//			List<CategoriaInvestimentoModel> categoriasInvestimento = dao.findAll(model.getidCarteira());
-//			for(CategoriaInvestimentoModel categoriaInvestimento : categoriasInvestimento) {
-//				System.out.println(categoriaInvestimento.toString());
-//			}
+			model.setidCarteira(1);
+			List<CategoriaInvestimentoModel> categoriasInvestimento = dao.findAll(model.getidCarteira());
+			for(CategoriaInvestimentoModel categoriaInvestimento : categoriasInvestimento) {
+				System.out.println(categoriaInvestimento.toString());
+			}
 			
 			//findById
 			 model.setidCategoriaInvestimento(1);
@@ -29,15 +29,15 @@ public class CategoriaInvestimentoView {
 		     dao.findById(model.getidCategoriaInvestimento(), model.getidCarteira());
 	 		
 			//update 
-//		model.setidCategoriaInvestimento(1);
-//			model.setidCarteira(1);
-//		model.setnmInvestimento("teste decrição");
-//		model.setnmInvestimento("TESTE nome");
-//		dao.update(model);
+			model.setidCategoriaInvestimento(1);
+			model.setidCarteira(1);
+			model.setnmInvestimento("teste decrição");
+			model.setnmInvestimento("TESTE nome");
+			dao.update(model);
 			
 			//delete
-			//model.setidCategoriaInvestimento(1);
-			//dao.delete(model.getidCategoriaInvestimento());
+			model.setidCategoriaInvestimento(1);
+			dao.delete(model.getidCategoriaInvestimento());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
