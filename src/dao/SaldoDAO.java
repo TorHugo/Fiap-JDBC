@@ -12,6 +12,10 @@ public interface SaldoDAO {
 	
 	SaldoModel findById(Integer idSaldo, Integer idUsuario);
 	
+	List<SaldoModel> findAllTpEntrada(Integer idUsuario);
+	
+	List<SaldoModel> findAllTpSaida(Integer idUsuario);
+	
 	void update(SaldoModel model);
 	
 	void delete(Integer idSaldo);

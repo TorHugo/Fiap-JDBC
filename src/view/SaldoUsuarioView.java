@@ -23,6 +23,20 @@ public class SaldoUsuarioView {
 				System.out.println(saldo.toString());
 			}
 			
+			//Busca todas as entradas.
+			model.setIdUsuario(1);
+			List<SaldoModel> entradas = dao.findAllTpEntrada(model.getIdUsuario());
+			for(SaldoModel saldo : entradas) {
+				System.out.println(saldo.toString());
+			}
+
+			//Busca todas as saidas.
+			model.setIdUsuario(1);
+			List<SaldoModel> saidas = dao.findAllTpSaida(model.getIdUsuario());
+			for(SaldoModel saldo : saidas) {
+				System.out.println(saldo.toString());
+			}
+			
 			//findById
 			model.setIdSaldo(1);
 			model.setIdUsuario(1);

@@ -20,8 +20,8 @@ public class UsuarioView {
 			dao.insert(model);
 			
 			//update
-			model.setIdUsuario(1);
-			model.setNmUsuario("Victor Hugo Arruda");
+			model.setIdUsuario(6);
+			model.setNmUsuario("TESTE UPDATE");
 			dao.update(model);
 
 			//findAll

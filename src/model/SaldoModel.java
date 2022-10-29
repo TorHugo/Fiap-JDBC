@@ -20,6 +20,13 @@ public class SaldoModel {
 		this.idUsuario = idUsuario;
 	}
 	
+	public SaldoModel(Integer idUsuario, Float dsValor, String nmValor) {
+		super();
+		this.idUsuario = idUsuario;
+		this.dsValor = dsValor;
+		this.nmValor = nmValor;
+	}
+	
 	public SaldoModel(Integer usuarioModel, Float dsValor, String nmValor, Integer tpEntrada, Integer tpSaida) {
 		super();
 		this.dsValor = dsValor;
@@ -28,9 +35,7 @@ public class SaldoModel {
 		this.tpSaida = tpSaida;
 		this.idUsuario = usuarioModel;
 	}
-
-
-
+	
 	public SaldoModel() {}
 	
 	public Integer getIdSaldo() {
