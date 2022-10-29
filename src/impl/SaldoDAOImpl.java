@@ -13,7 +13,6 @@ import model.SaldoModel;
 
 public class SaldoDAOImpl implements SaldoDAO{
 
-	// Teste
 	private Connection conexao;
 	PreparedStatement statement = null;
 	
@@ -22,6 +21,10 @@ public class SaldoDAOImpl implements SaldoDAO{
 	String updateSaldo = "UPDATE T_SALDO SET DS_VALOR = ?, NM_VALOR = ? WHERE ID_SALDO = ? AND ID_USUARIO = ?";
 	
 	String selectAll = "SELECT TS.ID_USUARIO, TS.DS_VALOR, TS.NM_VALOR, TS.TP_ENTRADA, TS.TP_SAIDA FROM T_SALDO TS WHERE ID_USUARIO = ?";
+
+	String selectAllTpEntrada = "SELECT ID_USUARIO, DS_VALOR, NM_VALOR FROM T_SALDO WHERE ID_USUARIO = ? AND TP_ENTRADA = 1";
+	
+	String selectAllTpSaida = "SELECT ID_USUARIO, DS_VALOR, NM_VALOR FROM T_SALDO WHERE ID_USUARIO = ? AND TP_SAIDA = 1";
 	
 	String selectSaldo = "SELECT ID_USUARIO, DS_VALOR, NM_VALOR, TP_ENTRADA, TP_SAIDA FROM T_SALDO WHERE ID_SALDO = ? AND ID_USUARIO = ?";
 	
@@ -36,11 +39,11 @@ public class SaldoDAOImpl implements SaldoDAO{
 			conexao = ConexaoDataBase.conectar();
 			statement = conexao.prepareStatement(insertSaldo);
 			
-			statement.setInt(1, 2);
+			statement.setInt(1, 7);
 			statement.setFloat(2, 3390.59f);
 			statement.setString(3, "Pagamento.");
-			statement.setInt(4, 1);
-			statement.setInt(5, 0);
+			statement.setInt(4, 0);
+			statement.setInt(5, 1);
 			statement.setInt(6, 1);
 			
 			statement.executeUpdate();
@@ -197,6 +200,90 @@ public class SaldoDAOImpl implements SaldoDAO{
 			}
 		}
 		
+	}
+
+	@Override
+	public List<SaldoModel> findAllTpEntrada(Integer idUsuario) {
+		List<SaldoModel> saldos = new ArrayList<SaldoModel>();
+		ResultSet resultSet = null;
+		
+		try {
+			System.out.println("DEBUG -> Iniciando método findAllTpEntrada.");
+			
+			conexao = ConexaoDataBase.conectar();
+			statement = conexao.prepareStatement(selectAllTpEntrada);
+			statement.setInt(1, idUsuario);
+			resultSet = statement.executeQuery();
+
+			System.out.println("1. Mapeando objetos.");
+			System.out.println("2. Cria o objeto com as informações recebidas.");
+			System.out.println("3. Adiciona o objeto a lista.");
+			
+			while(resultSet.next()) {
+				
+				SaldoModel saldoModel = new SaldoModel(
+							resultSet.getInt("ID_USUARIO"),
+							resultSet.getFloat("DS_VALOR"),
+							resultSet.getString("NM_VALOR"));
+				saldos.add(saldoModel);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println("FIM -> Termino do método.");
+		return saldos;
+	}
+
+	@Override
+	public List<SaldoModel> findAllTpSaida(Integer idUsuario) {
+		List<SaldoModel> saldos = new ArrayList<SaldoModel>();
+		ResultSet resultSet = null;
+		
+		try {
+			System.out.println("DEBUG -> Iniciando método findAllTpVariada.");
+			
+			conexao = ConexaoDataBase.conectar();
+			statement = conexao.prepareStatement(selectAllTpSaida);
+			statement.setInt(1, idUsuario);
+			resultSet = statement.executeQuery();
+
+			System.out.println("1. Mapeando objetos.");
+			System.out.println("2. Cria o objeto com as informações recebidas.");
+			System.out.println("3. Adiciona o objeto a lista.");
+			
+			while(resultSet.next()) {
+				
+				SaldoModel saldoModel = new SaldoModel(
+						resultSet.getInt("ID_USUARIO"),
+						resultSet.getFloat("DS_VALOR"),
+						resultSet.getString("NM_VALOR"));
+				saldos.add(saldoModel);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				statement.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println("FIM -> Termino do método.");
+		return saldos;
 	}
 	
 }

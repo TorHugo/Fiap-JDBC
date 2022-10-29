@@ -31,8 +31,8 @@ public class CategoriaInvestimentoView {
 			//update 
 			model.setidCategoriaInvestimento(1);
 			model.setidCarteira(1);
-			model.setnmInvestimento("teste decrição");
-			model.setnmInvestimento("TESTE nome");
+			model.setnmInvestimento("TESTE UPDATE");
+			model.setnmInvestimento("TESTE UPDATE");
 			dao.update(model);
 			
 			//delete
